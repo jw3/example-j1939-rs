@@ -4,4 +4,5 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-canparse = "0.1"
+canparse = { version="0.1", features=["use-socketcan"] }
+socketcan = "1.7.0"
