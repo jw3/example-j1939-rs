@@ -20,6 +20,7 @@ Experiments in reading j1939 from can bus using socketcan and canparse.
 ## sample data
 - https://github.com/CSS-Electronics/mdf4-converters
 - https://canlogger.csselectronics.com/canedge-getting-started/log-file-tools/
+  - @ `data/sample-can-data.zip`
 
 ```
 mdf2socketcan -i LOG/958D2219/00002501/00002081.MF4 -O /tmp/can
