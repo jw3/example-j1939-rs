@@ -1,8 +1,9 @@
-use canparse::pgn::{PgnLibrary, SpnDefinition, ParseMessage};
+use canparse::pgn::{ParseMessage, PgnLibrary, SpnDefinition};
+use example_j1939_rs::pgn;
 
 fn main() {
     // long id to pgn
-    let pgn: u32 = (2566845182 >> 8) & 0x1FFFF;
+    let pgn: u32 = pgn(2566845182);
     println!("{pgn}");
 
     let lib = PgnLibrary::from_dbc_file("data/j1939_utf8.dbc").unwrap();
@@ -10,14 +11,12 @@ fn main() {
     let fuel_consumption = lib.get_pgn(pgn).unwrap();
     dbg!(fuel_consumption);
 
-    let engine_avg_fuel_rate_def: &SpnDefinition = lib
-        .get_spn("EngAverageFuelEconomy").unwrap();
+    let engine_avg_fuel_rate_def: &SpnDefinition = lib.get_spn("EngAverageFuelEconomy").unwrap();
 
-    let engine_instant_fuel_rate_def: &SpnDefinition = lib
-        .get_spn("EngInstantaneousFuelEconomy").unwrap();
+    let engine_instant_fuel_rate_def: &SpnDefinition =
+        lib.get_spn("EngInstantaneousFuelEconomy").unwrap();
 
-    let engine_fuel_rate_def: &SpnDefinition = lib
-        .get_spn("EngFuelRate").unwrap();
+    let engine_fuel_rate_def: &SpnDefinition = lib.get_spn("EngFuelRate").unwrap();
 
     dbg!(engine_fuel_rate_def);
 
